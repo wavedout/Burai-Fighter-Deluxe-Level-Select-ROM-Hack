@@ -22,6 +22,10 @@ Weapon options cycle through **BASE**, **LASER**, **RING**, **MISSILE**, **FULL 
 
 Lives are **total** starting lives; the in-game display counts spare lives. For example, choosing 3 starts with 2 shown in the HUD. INFINITE displays 99.
 
+## Download
+
+[Download the v1.0 IPS patch ZIP](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/raw/refs/tags/v1.0/Burai-Fighter-Deluxe-Level-Select-v1.0.zip).
+
 ## Apply the patch
 
 Apply `Burai Fighter Deluxe - Level Select.ips` to an **unmodified Burai Fighter Deluxe (USA, Europe)** Game Boy ROM with an IPS-compatible patcher. Keep a copy of your original ROM. The download contains a patch, not the game.
