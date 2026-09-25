@@ -2,7 +2,7 @@
 
 A level select and starting loadout menu for **Burai Fighter Deluxe** on Game Boy. The new **LEVEL SELECT** choice appears on the title screen alongside **NEW GAME**, **PASSWORD**, and **VS**. NEW GAME still follows the original start sequence.
 
-**[Download the v1.0 IPS patch and instructions](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/releases/download/v1.0/Burai-Fighter-Deluxe-Level-Select-v1.0.zip)**
+**[Download the v1.0 IPS/BPS patches and instructions](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/releases/download/v1.0/Burai-Fighter-Deluxe-Level-Select-v1.0.zip)**
 
 ## Features
 
@@ -24,20 +24,18 @@ Lives are **total** starting lives; the in-game display counts spare lives. For 
 
 ## Download
 
-[Download the v1.0 IPS patch ZIP](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/raw/refs/tags/v1.0/Burai-Fighter-Deluxe-Level-Select-v1.0.zip).
+[Download the v1.0 release ZIP](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/releases/download/v1.0/Burai-Fighter-Deluxe-Level-Select-v1.0.zip). It contains both IPS and BPS patches plus instructions.
 
 ## Apply the patch
 
-Apply `Burai Fighter Deluxe - Level Select.ips` to an **unmodified Burai Fighter Deluxe (USA, Europe)** Game Boy ROM with an IPS-compatible patcher. Keep a copy of your original ROM. The download contains a patch, not the game.
+Apply **one** patch to an **unmodified Burai Fighter Deluxe (USA, Europe)** Game Boy ROM with a compatible patcher. Use `Burai Fighter Deluxe - Level Select.bps` when possible; BPS verifies the source ROM before patching. `Burai Fighter Deluxe - Level Select.ips` is included for broader compatibility. Do not apply both patches. Keep a copy of your original ROM. The download contains patches, not the game.
 
-| Original ROM | Value |
-| --- | --- |
-| Size | 65,536 bytes |
-| CRC32 | `3C86F5DB` |
-| MD5 | `DD5AA6E85827A3CE6E4B7500E75A3262` |
-| SHA-1 | `178E18B7E6E65E726B4E06F80D89C55332EA868B` |
+| ROM | Size | CRC32 | MD5 | SHA-1 | SHA-256 |
+| --- | ---: | --- | --- | --- | --- |
+| Original | 65,536 bytes | `3C86F5DB` | `DD5AA6E85827A3CE6E4B7500E75A3262` | `178E18B7E6E65E726B4E06F80D89C55332EA868B` | `704C24466E0F92E280073AF3191DAE54B842A8736281C697F8C9D1F35F91B065` |
+| Patched | 65,536 bytes | `288D8F3C` | `B22165318D02E98122A47115957E754D` | `2E49A2ACAA13D8A5A2E60D45CEB7F550068569F9` | `82D7F593F38B285FECBE10A9DCC67A66BB23BBE987548D378BCA6AE649BB594B` |
 
-The resulting ROM's CRC32 is `288D8F3C`. A different ROM revision may not work with this patch.
+A different ROM revision will not work with the BPS patch and may not work with the IPS patch.
 
 ## Screenshots
 
@@ -53,7 +51,7 @@ The resulting ROM's CRC32 is `288D8F3C`. A different ROM revision may not work w
 python3 source/build_burai.py "/path/to/Burai Fighter Deluxe (USA, Europe).gb"
 ```
 
-It checks the source ROM's CRC32 and writes the patched ROM and IPS patch to a local `build/` directory. The repository and release archive do not include a ROM.
+It checks the source ROM's CRC32 and writes the patched ROM plus IPS and BPS patches to a local `build/` directory. The repository and release archive do not include a ROM.
 
 ## Release
 
