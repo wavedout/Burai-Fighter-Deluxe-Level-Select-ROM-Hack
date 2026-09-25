@@ -2,7 +2,7 @@
 
 A level select and starting loadout menu for **Burai Fighter Deluxe** on Game Boy. The new **LEVEL SELECT** choice appears on the title screen alongside **NEW GAME**, **PASSWORD**, and **VS**. NEW GAME still follows the original start sequence.
 
-**[Download the v1.0 IPS patch and instructions](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/raw/refs/heads/main/Burai-Fighter-Deluxe-Level-Select-v1.0.zip)**
+**[Download the v1.0 IPS patch and instructions](https://github.com/wavedout/Burai-Fighter-Deluxe-Level-Select-ROM-Hack/releases/download/v1.0/Burai-Fighter-Deluxe-Level-Select-v1.0.zip)**
 
 ## Features
 
