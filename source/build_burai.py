@@ -19,6 +19,48 @@ BUILD = ROOT.parent / "build"
 BUILD.mkdir(exist_ok=True)
 OUT = BUILD / "Burai Fighter Deluxe - Level Select v1.0.gb"
 IPS = BUILD / "Burai Fighter Deluxe - Level Select.ips"
+BPS = BUILD / "Burai Fighter Deluxe - Level Select.bps"
+
+
+def bps_number(value: int) -> bytes:
+    """Encode an unsigned integer using BPS's variable-length format."""
+    encoded = bytearray()
+    while True:
+        byte = value & 0x7F
+        value >>= 7
+        if value == 0:
+            encoded.append(byte | 0x80)
+            return bytes(encoded)
+        encoded.append(byte)
+        value -= 1
+
+
+def make_bps(source: bytes, target: bytes) -> bytes:
+    """Create a compact BPS patch using SourceRead and TargetRead actions."""
+    patch = bytearray(b"BPS1")
+    patch.extend(bps_number(len(source)))
+    patch.extend(bps_number(len(target)))
+    patch.extend(bps_number(0))  # no metadata
+
+    offset = 0
+    while offset < len(target):
+        equal = offset < len(source) and source[offset] == target[offset]
+        start = offset
+        while offset < len(target):
+            matches = offset < len(source) and source[offset] == target[offset]
+            if matches != equal:
+                break
+            offset += 1
+        length = offset - start
+        mode = 0 if equal else 1  # SourceRead or TargetRead
+        patch.extend(bps_number(((length - 1) << 2) | mode))
+        if mode == 1:
+            patch.extend(target[start:offset])
+
+    patch.extend(struct.pack("<I", zlib.crc32(source)))
+    patch.extend(struct.pack("<I", zlib.crc32(target)))
+    patch.extend(struct.pack("<I", zlib.crc32(patch)))
+    return bytes(patch)
 
 class Code:
     def __init__(self, base: int):
@@ -451,6 +493,9 @@ def build():
         ips.extend(pos.to_bytes(3,"big")+len(data).to_bytes(2,"big")+data)
     ips.extend(b"EOF")
     IPS.write_bytes(ips)
-    print("ROM",OUT,"SHA256",hashlib.sha256(rom).hexdigest(),"IPS",len(ips),"bytes")
+    bps = make_bps(bytes(raw), bytes(rom))
+    BPS.write_bytes(bps)
+    print("ROM",OUT,"SHA256",hashlib.sha256(rom).hexdigest(),
+          "IPS",len(ips),"bytes","BPS",len(bps),"bytes")
 
 if __name__=="__main__":build()
