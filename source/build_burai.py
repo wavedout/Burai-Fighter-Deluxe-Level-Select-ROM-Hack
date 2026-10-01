@@ -220,11 +220,12 @@ def build():
     w.b(0xFE,4);w.jr(0x30,"all")
     write(w,0xD1C0) # 1 Laser, 2 Ring, 3 Missile
     w.b(0x3D,0x5F,0x16,0);hl(w,0xD1BD);w.b(0x19,0x36,10)
-    w.label("done");w.addr(0xC3,0x0903)
+    # Custom launches bypass the stock difficulty lives minimum.
+    w.label("done");w.addr(0xC3,0x0920)
     w.label("all");w.b(0xD6,3);write(w,0xD1C0)
     ld_a(w,10)
     for addr in (0xD1BD,0xD1BE,0xD1BF):write(w,addr)
-    w.addr(0xC3,0x0903)
+    w.addr(0xC3,0x0920)
     equipment=w.finish();print("equipment",len(equipment));assert len(equipment)<=0x720B-0x71DC
     assert rom[0x71dc:0x71dc+len(equipment)]==bytes(len(equipment))
     rom[0x71dc:0x71dc+len(equipment)]=equipment
@@ -259,8 +260,10 @@ def build():
     read(s,0xD1F0);write(s,0xC0D2)
     read(s,0xD1F1);s.b(0x5F,0x16,0)
     s.link(0x21,"life_table");s.b(0x19,0x7E);write(s,0xC0C9)
-    read(s,0xD1F2);s.b(0xB7);s.jr(0x28,"vanilla")
+    read(s,0xD1F2);s.b(0xB7);s.jr(0x28,"configured_base")
     s.addr(0xC3,0x71DC) # equipment choices finish in a separate bank-1 stub
+    # BASE also honors the chosen count; ordinary starts keep the stock path.
+    s.label("configured_base");s.addr(0xC3,0x0920)
     s.label("vanilla");s.addr(0xC3,0x0903)
     s.label("life_table");s.b(2,4,8,0x99)
     start=s.finish();print("start hook",len(start));assert len(start)<=66

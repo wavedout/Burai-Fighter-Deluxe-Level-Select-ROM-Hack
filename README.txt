@@ -39,7 +39,7 @@ SHA256: 704C24466E0F92E280073AF3191DAE54B842A8736281C697F8C9D1F35F91B065
 
 PATCHED ROM
 Size: 65536 bytes
-CRC32: 288D8F3C
+CRC32: 75148C61
 MD5: B22165318D02E98122A47115957E754D
 SHA1: 2E49A2ACAA13D8A5A2E60D45CEB7F550068569F9
 SHA256: 82D7F593F38B285FECBE10A9DCC67A66BB23BBE987548D378BCA6AE649BB594B
@@ -51,5 +51,10 @@ CREDITS
 Hack, code, and documentation: wavedout
 
 CHANGELOG
+October 1, 2026 maintenance correction: selecting 3 starting lives now
+works correctly on Eagle and Albatross. New Game, passwords, and continues
+retain their original behavior. The v1.0 tag and download filename are
+unchanged so existing download links continue to work.
+
 v1.0 - September 25, 2026
 - Initial public release.

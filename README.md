@@ -33,7 +33,7 @@ Apply **one** patch to an **unmodified Burai Fighter Deluxe (USA, Europe)** Game
 | ROM | Size | CRC32 | MD5 | SHA-1 | SHA-256 |
 | --- | ---: | --- | --- | --- | --- |
 | Original | 65,536 bytes | `3C86F5DB` | `DD5AA6E85827A3CE6E4B7500E75A3262` | `178E18B7E6E65E726B4E06F80D89C55332EA868B` | `704C24466E0F92E280073AF3191DAE54B842A8736281C697F8C9D1F35F91B065` |
-| Patched | 65,536 bytes | `288D8F3C` | `B22165318D02E98122A47115957E754D` | `2E49A2ACAA13D8A5A2E60D45CEB7F550068569F9` | `82D7F593F38B285FECBE10A9DCC67A66BB23BBE987548D378BCA6AE649BB594B` |
+| Patched | 65,536 bytes | `75148C61` | `B22165318D02E98122A47115957E754D` | `2E49A2ACAA13D8A5A2E60D45CEB7F550068569F9` | `82D7F593F38B285FECBE10A9DCC67A66BB23BBE987548D378BCA6AE649BB594B` |
 
 A different ROM revision will not work with the BPS patch and may not work with the IPS patch.
 
@@ -56,3 +56,9 @@ It checks the source ROM's CRC32 and writes the patched ROM plus IPS and BPS pat
 ## Release
 
 **v1.0 — September 25, 2026.** Initial public release. Created by **wavedout**.
+
+### October 1, 2026 maintenance correction
+
+Fixed Level Select’s 3-lives choice on Eagle and Albatross. New Game, passwords, and continues retain their original behavior. The `v1.0` release tag and ZIP filename are unchanged to preserve existing download links. Verification hashes above describe the corrected build.
+
+The corrected build passed all 560 stage/lives/weapon/difficulty combinations in PyBoy and in Gambatte’s GB and GBC modes, plus password, menu, finite/infinite lives, and assisted progression/ending checks. Physical hardware and link-cable VS were not retested.
